@@ -1,0 +1,10 @@
+# Deployment Architecture
+
+**Status**: Options evaluated; platform not selected. No resource definitions or deployment scripts are authorized.
+
+| Candidate | Advantages to evaluate | Costs/constraints to evaluate | Fit inputs still required |
+|---|---|---|---|
+| Azure App Service | Managed web/API hosting, runtime/container options, deployment slots, lower infrastructure operations burden | Plan/tier and VNet features affect cost/isolation; background processing and scaling boundaries need separate design; multiregion requires external routing/topology | API and worker split, concurrency, long-running task needs, private connectivity, team skills, budget, availability target |
+| Azure Kubernetes Service | Automatic mode provides more managed node provisioning, scaling, security defaults, monitoring, and upgrades; Standard mode provides more cluster configuration control | Both modes require a Kubernetes operating model; Standard leaves more cluster/node-pool work to the team, while Automatic has managed-mode constraints | Existing Kubernetes expertise, workload decomposition, networking controls, scale/availability, container needs, operational owner, budget, and Automatic-vs-Standard fit |
+
+No selection can be made from user count alone. Document Intelligence, Search, model deployments, Databricks, and host region compatibility must be cross-checked before adoption. High availability and disaster recovery require explicit topology, backup, failover, RTO/RPO, and cost decisions. See [ADR-011](../decisions/ADR-011-hosting-platform.md), [open questions](../project-management/open-questions.md), the [official compute comparison](https://learn.microsoft.com/en-us/azure/architecture/guide/technology-choices/compute-decision-tree), and [AKS mode guidance](https://learn.microsoft.com/en-us/azure/aks/what-is-aks).
